@@ -78,7 +78,7 @@ QVariant Alert_Model::data(const QModelIndex &index, int role) const
 void Alert_Model::add_alert()
 {
     Alert a;
-    a.timestamp = boost::posix_time::microsec_clock::local_time();
+    a.timestamp = boost::posix_time::second_clock::local_time();
     a.source = "Button";
     std::stringstream s;
     s << "Button was clicked at ";

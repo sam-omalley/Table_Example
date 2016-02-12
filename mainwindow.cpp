@@ -8,7 +8,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->tableView->setModel(&alert_model);
     ui->tableView->horizontalHeader()->setStretchLastSection(true);
-    ui->tableView->resizeColumnToContents(0);
+    ui->tableView->resizeColumnToContents(1);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(
+                0, QHeaderView::Fixed);
+    ui->tableView->setColumnWidth(0, 10);
 }
 
 MainWindow::~MainWindow()
