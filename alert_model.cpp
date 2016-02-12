@@ -107,7 +107,7 @@ void Alert_Model::timer_callback()
         return;
     }
 
-    std::cout << "Timer triggered: " << count++ << std::endl;
+//    std::cout << "Timer triggered: " << count++ << std::endl;
     int start_row = 0;
     int end_row = 0;
 

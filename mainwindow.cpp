@@ -1,3 +1,4 @@
+#include <QScrollBar>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -21,7 +22,12 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnAddAlert_clicked()
 {
+    int pos = ui->tableView->verticalScrollBar()->value();
     alert_model.add_alert();
+    if (pos > 0)
+    {
+        ui->tableView->verticalScrollBar()->setValue(pos + 1);
+    }
 }
 
 void MainWindow::on_btnClearAll_clicked()
