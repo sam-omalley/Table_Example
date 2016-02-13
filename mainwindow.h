@@ -21,6 +21,8 @@ private slots:
 
     void on_btnClearAll_clicked();
 
+    void model_row_inserted(const QModelIndex parent, int start, int end);
+
 private:
     Ui::MainWindow *ui;
     Alert_Model alert_model;

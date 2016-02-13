@@ -14,6 +14,14 @@ MainWindow::MainWindow(QWidget *parent) :
                 0, QHeaderView::Fixed);
     ui->tableView->setColumnWidth(0, 10);
     ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+
+    connect(
+        &alert_model,
+        SIGNAL(
+            rowsInserted(const QModelIndex &, int, int)),
+        this,
+        SLOT(
+            model_row_inserted(const QModelIndex &, int, int)));
 }
 
 MainWindow::~MainWindow()
@@ -23,15 +31,20 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btnAddAlert_clicked()
 {
-    int pos = ui->tableView->verticalScrollBar()->value();
     alert_model.add_alert();
-    if (pos > 0)
-    {
-        ui->tableView->verticalScrollBar()->setValue(pos + 1);
-    }
 }
 
 void MainWindow::on_btnClearAll_clicked()
 {
     alert_model.clear_all();
+}
+
+void MainWindow::model_row_inserted(
+        const QModelIndex parent, int start, int end)
+{
+    int pos = ui->tableView->verticalScrollBar()->value();
+    if (pos > 0)
+    {
+        ui->tableView->verticalScrollBar()->setValue(pos + 1);
+    }
 }

@@ -3,7 +3,8 @@
 #include <QColor>
 #include "alert_model.h"
 
-Alert_Model::Alert_Model() : count(0), fade_out(5000000)
+Alert_Model::Alert_Model() : count(0), fade_out(5000000),
+    QAbstractTableModel()
 {
     header_titles.push_back(" ");
     header_titles.push_back("           Timestamp           ");
@@ -11,7 +12,6 @@ Alert_Model::Alert_Model() : count(0), fade_out(5000000)
     header_titles.push_back("Message");
 
     timer.setInterval(100);
-    timer.start();
     connect(&timer, SIGNAL(timeout()), this, SLOT(timer_callback()));
 }
 
@@ -89,7 +89,10 @@ void Alert_Model::add_alert()
     alert_data.push_front(a);
     endInsertRows();
 
-    timer.start();
+    if (!timer.isActive())
+    {
+        timer.start();
+    }
 }
 
 void Alert_Model::clear_all()
