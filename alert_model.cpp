@@ -10,7 +10,7 @@ Alert_Model::Alert_Model() : count(0), fade_out(5000000)
     header_titles.push_back("Source");
     header_titles.push_back("Message");
 
-    timer.setInterval(40);
+    timer.setInterval(100);
     timer.start();
     connect(&timer, SIGNAL(timeout()), this, SLOT(timer_callback()));
 }
@@ -65,7 +65,7 @@ QVariant Alert_Model::data(const QModelIndex &index, int role) const
             if (age <= fade_out)
             {
                 int x = static_cast<int>((255.0/fade_out) * age);
-                QColor c(x, x, x);
+                QColor c(255, x, x);
                 return QBrush(c);
             }
         }

@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableView->horizontalHeader()->setSectionResizeMode(
                 0, QHeaderView::Fixed);
     ui->tableView->setColumnWidth(0, 10);
+    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
 }
 
 MainWindow::~MainWindow()
