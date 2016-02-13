@@ -45,6 +45,6 @@ void MainWindow::model_row_inserted(
     int pos = ui->tableView->verticalScrollBar()->value();
     if (pos > 0)
     {
-        ui->tableView->verticalScrollBar()->setValue(pos + 1);
+        ui->tableView->verticalScrollBar()->setValue(pos + (end - start) + 1);
     }
 }
