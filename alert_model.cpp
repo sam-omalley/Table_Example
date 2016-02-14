@@ -135,7 +135,7 @@ void Alert_Model::timer_callback()
     QModelIndex index;
     emit dataChanged(
                 index.child(start_row, 0),
-                index.child(end_row, header_titles.size() - 1));
+                index.child(end_row, 0));
 }
 
 int Alert_Model::get_age(const Alert & alert) const
