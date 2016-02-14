@@ -1,4 +1,4 @@
-# Table_Example
+# QT Table Row Age Fading Example
 This project is just an example of an efficient way to show new rows inserted into a QT Table by fading them away as they get older.
 
 # Design
